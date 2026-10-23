@@ -44,7 +44,8 @@ python script\windows\convert.py
 | `data\sparse\0\cameras.bin` | 相机内参，例如焦距、成像尺寸 |
 | `data\sparse\0\images.bin` | 每张图片对应的相机位置和朝向 |
 | `data\sparse\0\points3D.bin` | 稀疏三维点 |
-| `data\input.ply` | 稀疏点云初始化数据，**不是最终高斯** |
+
+训练首次读取数据时，官方代码会把 `data\sparse\0\points3D.bin` 转为 `data\sparse\0\points3D.ply`，并复制到 `output\input.ply`。这两个 PLY 都是**稀疏点云，不是训练后的高斯模型**。
 
 终端会输出 COLMAP 各阶段日志，但没有统一的总进度百分比。看到脚本最后报告 `Converted data/images and data/sparse/0`，并确认上述三个 `.bin` 文件都存在，再开始训练。如果相机只恢复了少数图片，先检查拍摄或抽帧，不要急着训练。
 
