@@ -1,0 +1,64 @@
+# BenchMelb：第一次自己运行 3DGS
+
+目标：用 Windows 桌面上的 `BenchMelb-KIRI.mp4`，从视频抽帧、用 COLMAP 求解相机，再训练出一个 3DGS 高斯模型。**这套命令目前只生成高斯，不生成 Mesh。**
+
+视频来自 [AWS 的 Gaussian Splats 示例素材](https://github.com/aws-solutions-library-samples/guidance-for-open-source-3d-reconstruction-toolbox-for-gaussian-splats-on-aws/blob/main/assets/input/BenchMelb.mov)，约 55 秒。当前文件位于 `C:\Users\Admin\Desktop\BenchMelb-KIRI.mp4`。
+
+## 1. 打开终端并进入工作区
+
+打开 Windows PowerShell 或 Anaconda PowerShell Prompt，逐行运行：
+
+```powershell
+cd C:\Users\Admin\Desktop\gitproject\3dgsmesh
+conda activate gs-main
+```
+
+看到提示符前面出现 `(gs-main)`，再继续。当前电脑已经配置好这个环境；换电脑时参照 [README](README.md) 安装依赖。
+
+## 2. 视频抽帧
+
+```powershell
+ffmpeg -i "$env:USERPROFILE\Desktop\BenchMelb-KIRI.mp4" -vf fps=3 -q:v 2 "data\input\frame_%04d.jpg"
+```
+
+输入是一段视频；输出是 `data\input\frame_0001.jpg` 等 JPG 图片。每秒取 3 帧，约得到 166 张。终端会显示 `frame=`、`time=` 等进度；结束后确认 `data\input` 里有图片。如果 FFmpeg 询问是否覆盖同名文件，先停下来检查旧数据，不要直接混用两次实验的图片。
+
+## 3. 求解相机并整理训练数据
+
+```powershell
+python script\windows\convert.py
+```
+
+这个脚本会调用仓库内的官方 `gaussian-splatting\convert.py`，再由它调用 COLMAP。主要产物：
+
+| 位置 | 内容 |
+| --- | --- |
+| `data\distorted` | COLMAP 中间结果，包括特征数据库和初步相机解算 |
+| `data\images` | 去畸变后的训练图片 |
+| `data\sparse\0\cameras.bin` | 相机内参，例如焦距、成像尺寸 |
+| `data\sparse\0\images.bin` | 每张图片对应的相机位置和朝向 |
+| `data\sparse\0\points3D.bin` | 稀疏三维点 |
+| `data\input.ply` | 稀疏点云初始化数据，**不是最终高斯** |
+
+终端会输出 COLMAP 各阶段日志，但没有统一的总进度百分比。看到脚本最后报告 `Converted data/images and data/sparse/0`，并确认上述三个 `.bin` 文件都存在，再开始训练。如果相机只恢复了少数图片，先检查拍摄或抽帧，不要急着训练。
+
+## 4. 训练高斯
+
+```powershell
+python script\windows\train.py --iterations 7000 --resolution 2
+```
+
+这里运行的是仓库内官方 `gaussian-splatting\train.py`；`7000` 是训练迭代数，`2` 表示训练分辨率为原图的一半。终端会显示训练进度与误差。完成后主要查看：
+
+```text
+output\point_cloud\iteration_7000\point_cloud.ply
+```
+
+这个 `.ply` 才是训练出的 **3DGS 高斯模型**。`output` 还会有训练参数、相机和评估结果。不要用普通 Mesh 查看器判断这个 PLY 的效果；它需要支持 Gaussian Splatting 的查看器。
+
+## 遇到问题时
+
+- 每条命令成功后再运行下一条；报错时保留 PowerShell 末尾的报错文本。
+- `convert.py` 提示 `Conversion output already exists`：`data\distorted`、`data\images` 或 `data\sparse` 有上次的结果。先备份旧实验，再清理这些转换产物，避免不同视频的数据混用。
+- `train.py` 提示 `Output folder is not empty`：`output` 中已有训练结果。先备份旧结果，再开始新实验。
+- 训练出的高斯和 Mesh 是两类不同结果；Mesh 转换是后续单独的实验步骤。
