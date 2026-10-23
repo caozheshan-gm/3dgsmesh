@@ -29,6 +29,6 @@ OpenClaw 服务器仅作文件中转；文件在其 `/home/ubuntu/3dgs-downloads
 
 这是安装时的历史记录。现在项目内已保存官方源码快照；在已激活的 Conda 环境中，从仓库根目录运行 `python script\windows\convert.py` 和 `python script\windows\train.py`。输入为 `data\input`，输出为 `output`。测试不会替代对视频质量、相机求解和真实尺寸的审查。
 
-Windows 桌面已创建 `3DGS Environment.cmd`，双击后打开并保持已激活环境的命令提示符。Mac 桌面 `Windows-3DGS-progress.command` 已改为显示完成摘要。
+旧的 Windows 桌面入口 `3DGS Environment.cmd` 指向 `D:\3dgs\apps\gaussian-src`，在改用本仓库作为工作区后已删除。现在从仓库根目录执行 `conda activate gs-main`，再运行 `script/windows/convert.py` 和 `script/windows/train.py`。Mac 桌面 `Windows-3DGS-progress.command` 已改为显示完成摘要。
 
 官方 3DGS 及其扩展含研究/评估用途许可；若将来厂房展示用于商业交付，需要逐项核对源码与模型工具许可。本次仅作本地学习和实验。
