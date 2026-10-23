@@ -1,1 +1,0 @@
-4fd84918a19d3a96ee135fced366acb9c8aa3979560deb246bce288ba3d031a2  /data/projects/benchmelb-20261018/delivery/mesh/benchmelb-mesh.glb

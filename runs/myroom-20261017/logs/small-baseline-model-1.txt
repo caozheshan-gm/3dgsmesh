@@ -1,8 +1,0 @@
-Cameras: 1
-Images: 19
-Registered images: 19
-Points: 623
-Observations: 2319
-Mean track length: 3.722311
-Mean observations per image: 122.052632
-Mean reprojection error: 0.752176px
