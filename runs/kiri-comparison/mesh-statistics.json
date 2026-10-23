@@ -1,0 +1,71 @@
+{
+  "kiri_default": {
+    "path": "/Users/czss/gitwork/3dgsmesh/artifacts/kiri-mesh/3DModel.obj",
+    "bytes": 232403605,
+    "v": 990823,
+    "vt": 1102156,
+    "vn": 1935078,
+    "f": 1969587,
+    "triangles": 1969587,
+    "non_triangular_faces": 0,
+    "bounds_min": [
+      -10.423793,
+      -4.809577,
+      -13.611247
+    ],
+    "bounds_max": [
+      7.577558,
+      9.008509,
+      5.022726
+    ],
+    "material_files": [
+      "3DModel.mtl"
+    ]
+  },
+  "kiri_custom": {
+    "path": "/Users/czss/gitwork/3dgsmesh/artifacts/kiri-mesh/AdvancedExport/3DModel_Custom.obj",
+    "bytes": 196744074,
+    "v": 843834,
+    "vt": 908907,
+    "vn": 1777334,
+    "f": 1628997,
+    "triangles": 1628997,
+    "non_triangular_faces": 0,
+    "bounds_min": [
+      -10.35,
+      -4.809111,
+      -13.568901
+    ],
+    "bounds_max": [
+      7.51864,
+      8.972409,
+      4.9882
+    ],
+    "material_files": [
+      "3DModel_Custom.mtl"
+    ]
+  },
+  "sugar": {
+    "path": "/Users/czss/gitwork/3dgsmesh/artifacts/myroom-20261017/mesh/sugarfine_3Dgs7000_densityestim02_sdfnorm02_level03_decim200000_normalconsistency01_gaussperface6.obj",
+    "bytes": 43296274,
+    "v": 193439,
+    "vt": 1068504,
+    "vn": 0,
+    "f": 355747,
+    "triangles": 355747,
+    "non_triangular_faces": 0,
+    "bounds_min": [
+      -7.631906,
+      -5.809506,
+      -0.499309
+    ],
+    "bounds_max": [
+      6.284325,
+      2.988833,
+      11.129874
+    ],
+    "material_files": [
+      "sugarfine_3Dgs7000_densityestim02_sdfnorm02_level03_decim200000_normalconsistency01_gaussperface6.mtl"
+    ]
+  }
+}

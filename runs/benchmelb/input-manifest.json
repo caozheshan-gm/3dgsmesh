@@ -1,0 +1,15 @@
+{
+  "input": "/Users/czss/Desktop/BenchMelb-KIRI.mp4",
+  "sha256": "d271b4547a1c7d84a2dd57bc42c7955c17b6c8f0034bf9c068e80e371e659f5a",
+  "bytes": 93091086,
+  "duration_seconds": 55.349257,
+  "width": 1434,
+  "height": 802,
+  "capture_fps": 59.784,
+  "candidate_fps": 10,
+  "selected_count": 277,
+  "automatic_masking": false,
+  "server_project": "/data/projects/benchmelb-20261018",
+  "planned_3dgs_iterations": 30000,
+  "planned_2dgs_iterations": 30000
+}

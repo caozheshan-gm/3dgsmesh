@@ -1,0 +1,10 @@
+{
+  "vertices": 1345289,
+  "triangles": 1999999,
+  "bytes": 45525884,
+  "sha256": "72d54499f4286e7b55da8240ca331adf4ad0b45b116c9be76c0f815c84c766a4",
+  "has_vertex_color": true,
+  "uv_texture": false,
+  "material": "KHR_materials_unlit",
+  "validation": "GLB header, colors/accessor counts, reload face count and finite vertices checked"
+}

@@ -1,0 +1,32 @@
+{
+  "obj": "/data/apps/SuGaR/output/refined_mesh/myroom-20261017/sugarfine_3Dgs7000_densityestim02_sdfnorm02_level03_decim200000_normalconsistency01_gaussperface6.obj",
+  "vertices": 193439,
+  "triangles": 355747,
+  "uv_vertices": 1068504,
+  "texture_shape": [
+    1,
+    3376,
+    3376,
+    3
+  ],
+  "bounds_min": [
+    -7.631906032562256,
+    -5.809505939483643,
+    -0.4993090033531189
+  ],
+  "bounds_max": [
+    6.284325122833252,
+    2.988832950592041,
+    11.129874229431152
+  ],
+  "gaussians": {
+    "vanilla": {
+      "count": 388313,
+      "bytes": 96303155
+    },
+    "refined": {
+      "count": 2134482,
+      "bytes": 529353068
+    }
+  }
+}

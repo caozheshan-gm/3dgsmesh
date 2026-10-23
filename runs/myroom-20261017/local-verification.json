@@ -1,0 +1,27 @@
+[
+  {
+    "file": "artifacts/myroom-20261017/gaussian/myroom-vanilla-7000.ply",
+    "sha256": "a24b77e90bfc4e9a9cd01d515d3900b2b3bc5f1fdddc1bf8e244398e74fe03fc",
+    "verified": true
+  },
+  {
+    "file": "artifacts/myroom-20261017/gaussian/refined/sugarfine_3Dgs7000_densityestim02_sdfnorm02_level03_decim200000_normalconsistency01_gaussperface6.ply",
+    "sha256": "bd5fa8b049c9cd1684ac7ec8a619552d4e68a0481c47966bb24441f207e5a3d9",
+    "verified": true
+  },
+  {
+    "file": "artifacts/myroom-20261017/mesh/sugarfine_3Dgs7000_densityestim02_sdfnorm02_level03_decim200000_normalconsistency01_gaussperface6.png",
+    "sha256": "26bf5b2a0ef3dee7341ce08721385551756b34b2091043c5225a20927a5d9e11",
+    "verified": true
+  },
+  {
+    "file": "artifacts/myroom-20261017/mesh/sugarfine_3Dgs7000_densityestim02_sdfnorm02_level03_decim200000_normalconsistency01_gaussperface6.mtl",
+    "sha256": "6372f17d3ad431353804b46429650939680b56a60fc90f5b1843e0c392cf8764",
+    "verified": true
+  },
+  {
+    "file": "artifacts/myroom-20261017/mesh/sugarfine_3Dgs7000_densityestim02_sdfnorm02_level03_decim200000_normalconsistency01_gaussperface6.obj",
+    "sha256": "5ee3552087a02bbec84de7b9d0acdc92db44174888e6a5ee174583df63a8e54c",
+    "verified": true
+  }
+]

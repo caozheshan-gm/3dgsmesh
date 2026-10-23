@@ -1,0 +1,11 @@
+{
+  "quad_enabled": true,
+  "target_quad_count_percent": 50,
+  "target_curve_ratio_percent": 50,
+  "include_PBR": true,
+  "format": "OBJ",
+  "texture_resolution": 4096,
+  "rig_enabled": true,
+  "source": "user screenshot",
+  "note": "Do not reproduce recipient address; only static OBJ geometry is compared, rig not validated."
+}

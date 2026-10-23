@@ -1,0 +1,1224 @@
+{
+  "voxel_size": 0.01,
+  "sdf_trunc": 0.04,
+  "min_weight": 5,
+  "opacity_threshold": 0.8,
+  "required_votes": 2,
+  "relative_depth_error": 0.01,
+  "absolute_depth_error": 0.005,
+  "camera_count": 93,
+  "vertices": 4715765,
+  "triangles": 7730654,
+  "elapsed_seconds": 152.97353601455688,
+  "views": [
+    {
+      "view": 0,
+      "candidate_points": 1111142,
+      "kept_points": 802141,
+      "neighbors": [
+        13,
+        15,
+        68,
+        67,
+        70,
+        72
+      ]
+    },
+    {
+      "view": 1,
+      "candidate_points": 1116153,
+      "kept_points": 888868,
+      "neighbors": [
+        18,
+        44,
+        45,
+        20,
+        43,
+        46
+      ]
+    },
+    {
+      "view": 2,
+      "candidate_points": 1109836,
+      "kept_points": 1035253,
+      "neighbors": [
+        26,
+        25,
+        27,
+        49,
+        6,
+        81
+      ]
+    },
+    {
+      "view": 3,
+      "candidate_points": 1120015,
+      "kept_points": 990668,
+      "neighbors": [
+        58,
+        32,
+        57,
+        60,
+        7,
+        61
+      ]
+    },
+    {
+      "view": 4,
+      "candidate_points": 1121395,
+      "kept_points": 854992,
+      "neighbors": [
+        39,
+        41,
+        65,
+        67,
+        91,
+        90
+      ]
+    },
+    {
+      "view": 5,
+      "candidate_points": 1115420,
+      "kept_points": 980090,
+      "neighbors": [
+        22,
+        46,
+        23,
+        45,
+        78,
+        49
+      ]
+    },
+    {
+      "view": 6,
+      "candidate_points": 1105993,
+      "kept_points": 912641,
+      "neighbors": [
+        54,
+        53,
+        27,
+        26,
+        51,
+        10
+      ]
+    },
+    {
+      "view": 7,
+      "candidate_points": 1115538,
+      "kept_points": 1008687,
+      "neighbors": [
+        60,
+        61,
+        87,
+        33,
+        62,
+        58
+      ]
+    },
+    {
+      "view": 8,
+      "candidate_points": 1119330,
+      "kept_points": 1037419,
+      "neighbors": [
+        67,
+        66,
+        65,
+        71,
+        0,
+        14
+      ]
+    },
+    {
+      "view": 9,
+      "candidate_points": 1117846,
+      "kept_points": 858100,
+      "neighbors": [
+        74,
+        73,
+        44,
+        1,
+        71,
+        70
+      ]
+    },
+    {
+      "view": 10,
+      "candidate_points": 1121423,
+      "kept_points": 1006949,
+      "neighbors": [
+        82,
+        83,
+        84,
+        28,
+        29,
+        54
+      ]
+    },
+    {
+      "view": 11,
+      "candidate_points": 1121246,
+      "kept_points": 1083353,
+      "neighbors": [
+        89,
+        62,
+        61,
+        91,
+        60,
+        36
+      ]
+    },
+    {
+      "view": 12,
+      "candidate_points": 1117604,
+      "kept_points": 822176,
+      "neighbors": [
+        13,
+        15,
+        8,
+        67,
+        70,
+        72
+      ]
+    },
+    {
+      "view": 13,
+      "candidate_points": 1117685,
+      "kept_points": 926805,
+      "neighbors": [
+        12,
+        14,
+        16,
+        8,
+        41,
+        40
+      ]
+    },
+    {
+      "view": 14,
+      "candidate_points": 1118063,
+      "kept_points": 895588,
+      "neighbors": [
+        15,
+        12,
+        16,
+        42,
+        8,
+        43
+      ]
+    },
+    {
+      "view": 15,
+      "candidate_points": 1113750,
+      "kept_points": 927508,
+      "neighbors": [
+        14,
+        13,
+        0,
+        17,
+        72,
+        8
+      ]
+    },
+    {
+      "view": 16,
+      "candidate_points": 1114717,
+      "kept_points": 805451,
+      "neighbors": [
+        15,
+        14,
+        43,
+        71,
+        69,
+        44
+      ]
+    },
+    {
+      "view": 17,
+      "candidate_points": 1118695,
+      "kept_points": 798971,
+      "neighbors": [
+        18,
+        43,
+        44,
+        15,
+        71,
+        14
+      ]
+    },
+    {
+      "view": 18,
+      "candidate_points": 1118256,
+      "kept_points": 944425,
+      "neighbors": [
+        1,
+        19,
+        9,
+        73,
+        16,
+        42
+      ]
+    },
+    {
+      "view": 19,
+      "candidate_points": 1113740,
+      "kept_points": 826255,
+      "neighbors": [
+        1,
+        18,
+        44,
+        46,
+        76,
+        43
+      ]
+    },
+    {
+      "view": 20,
+      "candidate_points": 1115331,
+      "kept_points": 901085,
+      "neighbors": [
+        19,
+        46,
+        1,
+        22,
+        47,
+        74
+      ]
+    },
+    {
+      "view": 21,
+      "candidate_points": 1108987,
+      "kept_points": 911782,
+      "neighbors": [
+        46,
+        22,
+        20,
+        19,
+        48,
+        9
+      ]
+    },
+    {
+      "view": 22,
+      "candidate_points": 1113341,
+      "kept_points": 977161,
+      "neighbors": [
+        47,
+        23,
+        46,
+        20,
+        45,
+        25
+      ]
+    },
+    {
+      "view": 23,
+      "candidate_points": 1113083,
+      "kept_points": 1058882,
+      "neighbors": [
+        48,
+        22,
+        24,
+        46,
+        78,
+        20
+      ]
+    },
+    {
+      "view": 24,
+      "candidate_points": 1110869,
+      "kept_points": 1048727,
+      "neighbors": [
+        49,
+        48,
+        23,
+        51,
+        5,
+        52
+      ]
+    },
+    {
+      "view": 25,
+      "candidate_points": 1114381,
+      "kept_points": 1071643,
+      "neighbors": [
+        24,
+        50,
+        51,
+        23,
+        47,
+        81
+      ]
+    },
+    {
+      "view": 26,
+      "candidate_points": 1109829,
+      "kept_points": 1017660,
+      "neighbors": [
+        2,
+        51,
+        25,
+        24,
+        28,
+        23
+      ]
+    },
+    {
+      "view": 27,
+      "candidate_points": 1112549,
+      "kept_points": 1076946,
+      "neighbors": [
+        53,
+        52,
+        2,
+        51,
+        55,
+        10
+      ]
+    },
+    {
+      "view": 28,
+      "candidate_points": 1114025,
+      "kept_points": 1079848,
+      "neighbors": [
+        54,
+        6,
+        53,
+        52,
+        83,
+        84
+      ]
+    },
+    {
+      "view": 29,
+      "candidate_points": 1116382,
+      "kept_points": 1063253,
+      "neighbors": [
+        55,
+        54,
+        6,
+        27,
+        57,
+        85
+      ]
+    },
+    {
+      "view": 30,
+      "candidate_points": 1113757,
+      "kept_points": 942023,
+      "neighbors": [
+        56,
+        29,
+        57,
+        84,
+        6,
+        86
+      ]
+    },
+    {
+      "view": 31,
+      "candidate_points": 1112155,
+      "kept_points": 806561,
+      "neighbors": [
+        57,
+        32,
+        30,
+        33,
+        84,
+        34
+      ]
+    },
+    {
+      "view": 32,
+      "candidate_points": 1118636,
+      "kept_points": 930124,
+      "neighbors": [
+        58,
+        57,
+        33,
+        86,
+        85,
+        88
+      ]
+    },
+    {
+      "view": 33,
+      "candidate_points": 1119881,
+      "kept_points": 943398,
+      "neighbors": [
+        59,
+        58,
+        60,
+        87,
+        88,
+        85
+      ]
+    },
+    {
+      "view": 34,
+      "candidate_points": 1119852,
+      "kept_points": 876467,
+      "neighbors": [
+        60,
+        59,
+        35,
+        87,
+        32,
+        89
+      ]
+    },
+    {
+      "view": 35,
+      "candidate_points": 1117337,
+      "kept_points": 779896,
+      "neighbors": [
+        7,
+        36,
+        61,
+        33,
+        87,
+        3
+      ]
+    },
+    {
+      "view": 36,
+      "candidate_points": 1110079,
+      "kept_points": 686482,
+      "neighbors": [
+        37,
+        61,
+        7,
+        60,
+        91,
+        88
+      ]
+    },
+    {
+      "view": 37,
+      "candidate_points": 1116419,
+      "kept_points": 675372,
+      "neighbors": [
+        36,
+        91,
+        90,
+        62,
+        39,
+        88
+      ]
+    },
+    {
+      "view": 38,
+      "candidate_points": 1121121,
+      "kept_points": 840396,
+      "neighbors": [
+        39,
+        4,
+        92,
+        90,
+        65,
+        66
+      ]
+    },
+    {
+      "view": 39,
+      "candidate_points": 1121457,
+      "kept_points": 826995,
+      "neighbors": [
+        4,
+        40,
+        65,
+        41,
+        66,
+        89
+      ]
+    },
+    {
+      "view": 40,
+      "candidate_points": 1121393,
+      "kept_points": 966705,
+      "neighbors": [
+        4,
+        39,
+        67,
+        8,
+        69,
+        12
+      ]
+    },
+    {
+      "view": 41,
+      "candidate_points": 1120343,
+      "kept_points": 958536,
+      "neighbors": [
+        40,
+        4,
+        8,
+        67,
+        15,
+        14
+      ]
+    },
+    {
+      "view": 42,
+      "candidate_points": 1121397,
+      "kept_points": 856598,
+      "neighbors": [
+        43,
+        16,
+        71,
+        69,
+        44,
+        8
+      ]
+    },
+    {
+      "view": 43,
+      "candidate_points": 1121427,
+      "kept_points": 987570,
+      "neighbors": [
+        42,
+        17,
+        16,
+        71,
+        18,
+        45
+      ]
+    },
+    {
+      "view": 44,
+      "candidate_points": 1121315,
+      "kept_points": 991047,
+      "neighbors": [
+        45,
+        18,
+        9,
+        73,
+        42,
+        16
+      ]
+    },
+    {
+      "view": 45,
+      "candidate_points": 1119747,
+      "kept_points": 958901,
+      "neighbors": [
+        44,
+        19,
+        9,
+        20,
+        21,
+        73
+      ]
+    },
+    {
+      "view": 46,
+      "candidate_points": 1118448,
+      "kept_points": 978452,
+      "neighbors": [
+        5,
+        22,
+        47,
+        77,
+        75,
+        9
+      ]
+    },
+    {
+      "view": 47,
+      "candidate_points": 1111850,
+      "kept_points": 988055,
+      "neighbors": [
+        22,
+        23,
+        21,
+        49,
+        45,
+        79
+      ]
+    },
+    {
+      "view": 48,
+      "candidate_points": 1110788,
+      "kept_points": 971876,
+      "neighbors": [
+        23,
+        49,
+        22,
+        50,
+        2,
+        79
+      ]
+    },
+    {
+      "view": 49,
+      "candidate_points": 1102604,
+      "kept_points": 901740,
+      "neighbors": [
+        24,
+        25,
+        23,
+        47,
+        5,
+        46
+      ]
+    },
+    {
+      "view": 50,
+      "candidate_points": 1104540,
+      "kept_points": 970842,
+      "neighbors": [
+        25,
+        51,
+        2,
+        23,
+        47,
+        6
+      ]
+    },
+    {
+      "view": 51,
+      "candidate_points": 1107673,
+      "kept_points": 995712,
+      "neighbors": [
+        2,
+        50,
+        52,
+        24,
+        6,
+        47
+      ]
+    },
+    {
+      "view": 52,
+      "candidate_points": 1109737,
+      "kept_points": 955476,
+      "neighbors": [
+        53,
+        26,
+        2,
+        54,
+        29,
+        82
+      ]
+    },
+    {
+      "view": 53,
+      "candidate_points": 1108012,
+      "kept_points": 932868,
+      "neighbors": [
+        6,
+        27,
+        28,
+        2,
+        25,
+        82
+      ]
+    },
+    {
+      "view": 54,
+      "candidate_points": 1109760,
+      "kept_points": 935284,
+      "neighbors": [
+        28,
+        29,
+        53,
+        52,
+        83,
+        10
+      ]
+    },
+    {
+      "view": 55,
+      "candidate_points": 1111277,
+      "kept_points": 992691,
+      "neighbors": [
+        29,
+        30,
+        6,
+        57,
+        83,
+        52
+      ]
+    },
+    {
+      "view": 56,
+      "candidate_points": 1117603,
+      "kept_points": 985788,
+      "neighbors": [
+        30,
+        31,
+        29,
+        58,
+        86,
+        83
+      ]
+    },
+    {
+      "view": 57,
+      "candidate_points": 1119045,
+      "kept_points": 837907,
+      "neighbors": [
+        31,
+        32,
+        3,
+        33,
+        84,
+        34
+      ]
+    },
+    {
+      "view": 58,
+      "candidate_points": 1117035,
+      "kept_points": 894429,
+      "neighbors": [
+        32,
+        33,
+        57,
+        60,
+        87,
+        88
+      ]
+    },
+    {
+      "view": 59,
+      "candidate_points": 1120733,
+      "kept_points": 936375,
+      "neighbors": [
+        33,
+        34,
+        58,
+        87,
+        57,
+        85
+      ]
+    },
+    {
+      "view": 60,
+      "candidate_points": 1117873,
+      "kept_points": 920686,
+      "neighbors": [
+        34,
+        59,
+        35,
+        3,
+        32,
+        89
+      ]
+    },
+    {
+      "view": 61,
+      "candidate_points": 1112409,
+      "kept_points": 963646,
+      "neighbors": [
+        7,
+        11,
+        89,
+        35,
+        36,
+        33
+      ]
+    },
+    {
+      "view": 62,
+      "candidate_points": 1119127,
+      "kept_points": 872053,
+      "neighbors": [
+        89,
+        11,
+        92,
+        63,
+        87,
+        64
+      ]
+    },
+    {
+      "view": 63,
+      "candidate_points": 1119195,
+      "kept_points": 636523,
+      "neighbors": [
+        92,
+        90,
+        62,
+        37,
+        39,
+        4
+      ]
+    },
+    {
+      "view": 64,
+      "candidate_points": 1121212,
+      "kept_points": 940175,
+      "neighbors": [
+        65,
+        66,
+        91,
+        90,
+        40,
+        37
+      ]
+    },
+    {
+      "view": 65,
+      "candidate_points": 1121212,
+      "kept_points": 955325,
+      "neighbors": [
+        66,
+        67,
+        68,
+        39,
+        38,
+        90
+      ]
+    },
+    {
+      "view": 66,
+      "candidate_points": 1119279,
+      "kept_points": 994438,
+      "neighbors": [
+        67,
+        8,
+        64,
+        4,
+        70,
+        13
+      ]
+    },
+    {
+      "view": 67,
+      "candidate_points": 1120233,
+      "kept_points": 970529,
+      "neighbors": [
+        8,
+        68,
+        69,
+        70,
+        12,
+        42
+      ]
+    },
+    {
+      "view": 68,
+      "candidate_points": 1119401,
+      "kept_points": 1032845,
+      "neighbors": [
+        8,
+        67,
+        66,
+        41,
+        13,
+        14
+      ]
+    },
+    {
+      "view": 69,
+      "candidate_points": 1120483,
+      "kept_points": 967356,
+      "neighbors": [
+        68,
+        8,
+        67,
+        66,
+        14,
+        43
+      ]
+    },
+    {
+      "view": 70,
+      "candidate_points": 1121384,
+      "kept_points": 914748,
+      "neighbors": [
+        71,
+        69,
+        73,
+        42,
+        74,
+        41
+      ]
+    },
+    {
+      "view": 71,
+      "candidate_points": 1121472,
+      "kept_points": 976218,
+      "neighbors": [
+        72,
+        73,
+        74,
+        43,
+        15,
+        14
+      ]
+    },
+    {
+      "view": 72,
+      "candidate_points": 1120503,
+      "kept_points": 849950,
+      "neighbors": [
+        71,
+        70,
+        69,
+        9,
+        68,
+        75
+      ]
+    },
+    {
+      "view": 73,
+      "candidate_points": 1120235,
+      "kept_points": 896829,
+      "neighbors": [
+        74,
+        71,
+        70,
+        43,
+        1,
+        76
+      ]
+    },
+    {
+      "view": 74,
+      "candidate_points": 1121166,
+      "kept_points": 872344,
+      "neighbors": [
+        9,
+        75,
+        44,
+        76,
+        43,
+        77
+      ]
+    },
+    {
+      "view": 75,
+      "candidate_points": 1117822,
+      "kept_points": 860395,
+      "neighbors": [
+        9,
+        74,
+        45,
+        19,
+        18,
+        43
+      ]
+    },
+    {
+      "view": 76,
+      "candidate_points": 1118760,
+      "kept_points": 851840,
+      "neighbors": [
+        77,
+        9,
+        45,
+        79,
+        19,
+        1
+      ]
+    },
+    {
+      "view": 77,
+      "candidate_points": 1119632,
+      "kept_points": 902820,
+      "neighbors": [
+        76,
+        75,
+        46,
+        5,
+        74,
+        23
+      ]
+    },
+    {
+      "view": 78,
+      "candidate_points": 1120143,
+      "kept_points": 969728,
+      "neighbors": [
+        79,
+        76,
+        75,
+        81,
+        22,
+        74
+      ]
+    },
+    {
+      "view": 79,
+      "candidate_points": 1121463,
+      "kept_points": 966621,
+      "neighbors": [
+        78,
+        77,
+        76,
+        5,
+        82,
+        9
+      ]
+    },
+    {
+      "view": 80,
+      "candidate_points": 1121472,
+      "kept_points": 994304,
+      "neighbors": [
+        81,
+        10,
+        82,
+        76,
+        84,
+        47
+      ]
+    },
+    {
+      "view": 81,
+      "candidate_points": 1121463,
+      "kept_points": 1072096,
+      "neighbors": [
+        10,
+        82,
+        79,
+        27,
+        25,
+        29
+      ]
+    },
+    {
+      "view": 82,
+      "candidate_points": 1120948,
+      "kept_points": 1009561,
+      "neighbors": [
+        10,
+        81,
+        80,
+        29,
+        55,
+        30
+      ]
+    },
+    {
+      "view": 83,
+      "candidate_points": 1120163,
+      "kept_points": 975838,
+      "neighbors": [
+        82,
+        84,
+        85,
+        28,
+        86,
+        57
+      ]
+    },
+    {
+      "view": 84,
+      "candidate_points": 1120593,
+      "kept_points": 821779,
+      "neighbors": [
+        85,
+        86,
+        10,
+        31,
+        87,
+        3
+      ]
+    },
+    {
+      "view": 85,
+      "candidate_points": 1120016,
+      "kept_points": 953557,
+      "neighbors": [
+        84,
+        87,
+        56,
+        32,
+        88,
+        59
+      ]
+    },
+    {
+      "view": 86,
+      "candidate_points": 1121040,
+      "kept_points": 1017685,
+      "neighbors": [
+        85,
+        88,
+        3,
+        59,
+        31,
+        61
+      ]
+    },
+    {
+      "view": 87,
+      "candidate_points": 1119817,
+      "kept_points": 1025584,
+      "neighbors": [
+        88,
+        61,
+        7,
+        59,
+        3,
+        32
+      ]
+    },
+    {
+      "view": 88,
+      "candidate_points": 1120089,
+      "kept_points": 1052290,
+      "neighbors": [
+        87,
+        61,
+        7,
+        90,
+        91,
+        35
+      ]
+    },
+    {
+      "view": 89,
+      "candidate_points": 1120857,
+      "kept_points": 1065851,
+      "neighbors": [
+        11,
+        62,
+        91,
+        63,
+        37,
+        86
+      ]
+    },
+    {
+      "view": 90,
+      "candidate_points": 1120330,
+      "kept_points": 1061905,
+      "neighbors": [
+        92,
+        89,
+        11,
+        61,
+        38,
+        35
+      ]
+    },
+    {
+      "view": 91,
+      "candidate_points": 1120321,
+      "kept_points": 998628,
+      "neighbors": [
+        90,
+        89,
+        11,
+        37,
+        39,
+        4
+      ]
+    },
+    {
+      "view": 92,
+      "candidate_points": 1120323,
+      "kept_points": 998586,
+      "neighbors": [
+        90,
+        89,
+        11,
+        37,
+        39,
+        4
+      ]
+    }
+  ]
+}
