@@ -1,16 +1,31 @@
 # 3dgsmesh
 
-视频 / 照片 → 相机求解 → 3D Gaussian Splatting → Mesh 的实验工作区。后续训练以 **Windows 原生环境**为主，Mac 用于整理素材、SSH 管理和查看结果。
+Windows 原生图片 → COLMAP 相机求解 → 3D Gaussian Splatting 训练工作区。当前电脑的官方 3DGS 源码已单独安装在 `D:\3dgs\apps\gaussian-src`，本仓库只保存调用脚本、说明和项目记录，不复制官方源码。
 
-## 当前环境
+## 从图片开始
 
-- [Windows 原生 3DGS 环境](docs/Windows原生3DGS环境.md)：已安装的版本、路径和 GPU 烟测结果。
-- [Windows 4090 SSH 连接](docs/Windows-4090-SSH连接记录.md)：Tailscale 与远程连接记录。
-- [Windows 脚本](scripts/windows/)：环境激活、依赖安装、扩展编译与 50 步烟测。正式训练脚本和新实验从这里继续编写。
-- [历史技术与云服务器记录](docs/技术栈与服务器安装记录.md)：此前的云端试验；腾讯云 GPU 实例目前关机。
+在本仓库根目录打开 PowerShell，第一次执行（`corner` 可换成英文项目名）：
 
-`runs/` 保留 myroom 和 BenchMelb 的历史实验报告、参数与结果统计，便于比较和复盘。过去的 Linux 单次实验脚本已从当前工作树移除，需要时可从 Git 历史恢复。
+```powershell
+.\scripts\windows\run-project.cmd corner
+```
 
-历史高斯、网格和截图原本位于 Git 忽略的 `artifacts/`。为让仓库保持精简，这批结果已移到本机 `/Users/czss/Documents/3dgsmesh-archive-2026-10-23/artifacts/`；报告中的旧 `artifacts/` 相对链接在当前工作树中不会直接打开。迁移到 Windows 时按需复制具体成果，不必同步整份归档。临时安装中转文件及重复压缩副本已经删除。
+脚本会创建 `data\corner\input\`。把 JPG/PNG 照片放进去，然后先做相机求解：
 
-训练生成的数据、模型和安装包请放在 Git 忽略的 `artifacts/`、`data/`、`outputs/` 或仓库外的项目目录；只把脚本、配置和必要的实验记录提交到 Git。
+```powershell
+.\scripts\windows\run-project.cmd corner -ConvertOnly
+```
+
+检查生成的 `data\corner\images\` 和 `data\corner\sparse\0\`，确认照片注册和相机轨迹合理，再训练高斯：
+
+```powershell
+.\scripts\windows\run-project.cmd corner -TrainOnly -Iterations 7000 -Resolution 2
+```
+
+结果在 `outputs\corner\point_cloud\iteration_7000\point_cloud.ply`。也可省略 `-ConvertOnly`、`-TrainOnly`，一次完成两步。`data/`、`outputs/` 被 Git 忽略，正式训练前请阅读[完整操作和注意事项](docs/Windows-image-to-3dgs.md)。
+
+- [Windows 原生环境与已验证版本](docs/Windows原生3DGS环境.md)
+- [Windows SSH 连接记录](docs/Windows-4090-SSH连接记录.md)
+- [历史技术和云服务器记录](docs/技术栈与服务器安装记录.md)
+
+`runs/` 是之前的实验记录；`scripts/windows/` 包含环境、转换、训练和烟测脚本。当前流程输出 **3DGS**，Mesh 是后续独立步骤。
