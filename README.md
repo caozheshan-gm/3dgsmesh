@@ -56,3 +56,7 @@ python script\windows\train.py --iterations 7000 --resolution 2
 转换结果在 `data/images/` 和 `data/sparse/0/`，高斯模型在 `output/point_cloud/iteration_7000/point_cloud.ply`。`data/` 和 `output/` 的内容默认不提交 Git。首次使用及更换电脑时的依赖配置、参数和注意事项见 [Windows 工作流](docs/Windows-image-to-3dgs.md)。
 
 源码快照取自本机此前验证过的官方固定版本，保留原许可与依赖源码；只为兼容 COLMAP 4.2.1 修改了 `gaussian-splatting/convert.py` 中两个已更名的 GPU 参数。原始版本和环境记录见 [Windows 环境文档](docs/Windows原生3DGS环境.md)。本流程只输出 3DGS；Mesh 是之后独立的一步。
+
+## 历史归档
+
+myroom 和 BenchMelb 的旧实验报告、参数与结果统计已移到 Mac 本机 `/Users/czss/Documents/3dgsmesh-archive-2026-10-23/runs/`；高斯、网格和截图在同一归档目录的 `artifacts/`。旧报告中的相对链接需以该归档目录为根打开。迁移到 Windows 时按需复制具体成果。过去的 Linux 单次实验脚本可从 Git 历史恢复。
