@@ -25,7 +25,7 @@ if not (data / "images").is_dir():
     raise SystemExit("Missing data/images; run script/windows/convert.py first.")
 if not trainer.is_file():
     raise SystemExit(f"Official source missing: {trainer}")
-if output.exists() and any(output.iterdir()):
+if output.exists() and any(path.name != ".gitkeep" for path in output.iterdir()):
     raise SystemExit(f"Output folder is not empty: {output}. Move it before starting another run.")
 output.mkdir(exist_ok=True)
 
