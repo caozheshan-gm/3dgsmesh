@@ -1,31 +1,23 @@
 # 3dgsmesh
 
-Windows 原生图片 → COLMAP 相机求解 → 3D Gaussian Splatting 训练工作区。当前电脑的官方 3DGS 源码已单独安装在 `D:\3dgs\apps\gaussian-src`，本仓库只保存调用脚本、说明和项目记录，不复制官方源码。
+这是 Windows 上的图片预处理和 3DGS 训练工作区。官方 [3D Gaussian Splatting 源码](https://github.com/graphdeco-inria/gaussian-splatting)及训练所需的三个扩展源码保存在 `gaussian-splatting/`，脚本使用仓库相对路径，不依赖另一份 `D:\3dgs\apps\gaussian-src`。
 
-## 从图片开始
-
-在本仓库根目录打开 PowerShell，第一次执行（`corner` 可换成英文项目名）：
-
-```powershell
-.\scripts\windows\run-project.cmd corner
+```text
+data/input/                 放 JPG/PNG 照片
+output/                     训练结果
+script/windows/convert.py   COLMAP 相机求解与去畸变
+script/windows/train.py     3DGS 训练
+gaussian-splatting/         固定版本的官方源码快照
+docs/                       环境与实验记录
 ```
 
-脚本会创建 `data\corner\input\`。把 JPG/PNG 照片放进去，然后先做相机求解：
+在仓库根目录、已经激活的 3DGS Conda 环境中运行：
 
 ```powershell
-.\scripts\windows\run-project.cmd corner -ConvertOnly
+python script\windows\convert.py
+python script\windows\train.py --iterations 7000 --resolution 2
 ```
 
-检查生成的 `data\corner\images\` 和 `data\corner\sparse\0\`，确认照片注册和相机轨迹合理，再训练高斯：
+转换结果在 `data/images/` 和 `data/sparse/0/`，高斯模型在 `output/point_cloud/iteration_7000/point_cloud.ply`。`data/` 和 `output/` 的内容默认不提交 Git。首次使用及更换电脑时的依赖配置、参数和注意事项见 [Windows 工作流](docs/Windows-image-to-3dgs.md)。
 
-```powershell
-.\scripts\windows\run-project.cmd corner -TrainOnly -Iterations 7000 -Resolution 2
-```
-
-结果在 `outputs\corner\point_cloud\iteration_7000\point_cloud.ply`。也可省略 `-ConvertOnly`、`-TrainOnly`，一次完成两步。`data/`、`outputs/` 被 Git 忽略，正式训练前请阅读[完整操作和注意事项](docs/Windows-image-to-3dgs.md)。
-
-- [Windows 原生环境与已验证版本](docs/Windows原生3DGS环境.md)
-- [Windows SSH 连接记录](docs/Windows-4090-SSH连接记录.md)
-- [历史技术和云服务器记录](docs/技术栈与服务器安装记录.md)
-
-`runs/` 是之前的实验记录；`scripts/windows/` 包含环境、转换、训练和烟测脚本。当前流程输出 **3DGS**，Mesh 是后续独立步骤。
+源码快照取自本机此前验证过的官方固定版本，保留原许可与依赖源码；只为兼容 COLMAP 4.2.1 修改了 `gaussian-splatting/convert.py` 中两个已更名的 GPU 参数。原始版本和环境记录见 [Windows 环境文档](docs/Windows原生3DGS环境.md)。本流程只输出 3DGS；Mesh 是之后独立的一步。

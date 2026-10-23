@@ -1,0 +1,14 @@
+[
+  {
+    "repo": "camenduru/simple-knn",
+    "commit": "86710c2d4b46680c02301765dd79e465819c8f19",
+    "subdir": "submodules/simple-knn",
+    "archive_sha256": "80054b00f6a5eba8f524a02e67145908169776096d8b7ad2148c00840e666100"
+  },
+  {
+    "repo": "g-truc/glm",
+    "commit": "5c46b9c07008ae65cb81ab79cd677ecc1934b903",
+    "subdir": "submodules/diff-gaussian-rasterization/third_party/glm",
+    "archive_sha256": "d93f55fe6bc9dd9159dfde2c6181c504e15ce2d220e20e3ca653012154e9696b"
+  }
+]

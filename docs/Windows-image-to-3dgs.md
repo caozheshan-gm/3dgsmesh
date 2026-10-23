@@ -1,44 +1,24 @@
-# Windows：图片 → COLMAP → 3DGS
+# Windows：图片到高斯模型
 
-这个仓库负责实验输入、调用脚本和结果记录。官方 3DGS 源码已经单独安装在 `D:\3dgs\apps\gaussian-src`；**不要把官方仓库再次复制进本项目**。`convert.py` 和 `train.py` 都来自那份官方源码，本仓库的 `scripts/windows/run-project.cmd` 只是调用入口。
+## 文件夹与运行顺序
 
-## 第一次使用
+1. 在仓库 `data/input/` 放入相互重叠的 JPG/PNG 照片。建议初次测试用几十张到一百多张清晰照片，有真实的相机位移，避免大量重复帧、运动模糊和 HEIC 原片。
+2. 打开已经配置好的 3DGS Conda 环境，在仓库根目录执行 `python script\windows\convert.py`。这一步调用仓库内 `gaussian-splatting/convert.py` 和 COLMAP，输出 `data/images/`、`data/sparse/0/`。
+3. 检查已注册图片数、相机轨迹和稀疏点云。相机求解不好时先处理照片，不要急着训练。
+4. 执行 `python script\windows\train.py --iterations 7000 --resolution 2`。它调用仓库内 `gaussian-splatting/train.py`，输出 `output/point_cloud/iteration_7000/point_cloud.ply`。
 
-在本仓库根目录打开 PowerShell，先执行：
+`--resolution 2` 是先用半分辨率适配 16GB 显存；若显存不足可试 `--resolution 4`。确认流程和照片质量后，再另起一次实验尝试更多迭代。脚本会拒绝覆盖已有转换或训练结果；更换素材前请自行备份或移走 `data/` 中的生成目录以及 `output/`。
 
-```powershell
-.\scripts\windows\run-project.cmd corner
-```
+## 换电脑时
 
-它会创建 `data\corner\input\` 并提示放入照片。复制相互重叠的 JPG/PNG 照片到该目录。路径应使用英文字母、数字、`_` 或 `-` 作为项目名；仓库所在目录不要含空格，因为当前固定版本的官方 `convert.py` 内部没有给 COLMAP 数据路径加引号。视频需先抽帧；HEIC 照片先转成 JPG/PNG。首次小样建议几十到一百多张清晰、有视差、有重叠的图片，并避免大量相同机位的重复帧。
+源码与三个扩展源码都随本仓库保存，因此不需要把官方仓库再克隆到项目里；**仍需在新电脑安装**兼容的 NVIDIA 驱动、CUDA、PyTorch、编译器和 COLMAP，并在 Conda 环境中编译扩展。版本、已验证的 Windows 配置和安装路径见 [Windows 原生环境记录](Windows原生3DGS环境.md)。
 
-## 运行
+脚本通过当前 `python` 运行官方源码，不写死 Conda 安装路径。COLMAP 可在 `PATH` 中，也可设环境变量 `COLMAP_BIN` 指向 `COLMAP.bat` 或 `colmap.exe`。当前 Windows 电脑已设置用户级 `COLMAP_BIN`；在新电脑上需重新配置该变量。固定版本的官方 `convert.py` 构造 COLMAP 命令时没有给数据路径加引号，因此仓库路径请避免空格。
 
-推荐分两步，先检查相机求解再投入训练时间：
+源码版本以 `gaussian-splatting/source-manifest.json` 及环境记录为准。为兼容当前 COLMAP 4.2.1，仓库内 `gaussian-splatting/convert.py` 将 `--SiftExtraction.use_gpu`、`--SiftMatching.use_gpu` 分别改为 `--FeatureExtraction.use_gpu`、`--FeatureMatching.use_gpu`。其余训练逻辑没有改动。源码保留原许可；本流程当前用于学习和实验。
 
-```powershell
-.\scripts\windows\run-project.cmd corner -ConvertOnly
-.\scripts\windows\run-project.cmd corner -TrainOnly -Iterations 7000 -Resolution 2
-```
+## 已验证
 
-第一步通过仓库的 `convert-colmap42.py` 运行官方 `convert.py`。已安装的 COLMAP 4.2.1 将两个旧 GPU 参数更名；适配器仅在内存中替换参数名，不修改官方源码。它调用 COLMAP 特征提取、**穷举匹配**、相机求解和去畸变。结果位于 `data\corner\images\` 与 `data\corner\sparse\0\`。检查 COLMAP 注册图片数量、相机轨迹和稀疏点云后，再运行第二步。超过几百张图时穷举匹配会很慢，应先筛选抽帧或改用适合长序列的匹配流程。
+2026-10-23，用旧房间素材的 48 张图通过新目录中的两个脚本进行了短测试：COLMAP 注册 48/48 张，随后训练 50 步，生成 `output/point_cloud/iteration_50/point_cloud.ply`。这只验证路径和执行流程；50 步结果不能评价重建质量，也没有生成 Mesh。
 
-也可以在确认照片质量后一次运行：
-
-```powershell
-.\scripts\windows\run-project.cmd corner -Iterations 7000 -Resolution 2
-```
-
-第二步调用官方 `train.py`，训练数据放在 `data\corner\`，输出在 `outputs\corner\`。成功后高斯模型位于：
-
-```text
-outputs\corner\point_cloud\iteration_7000\point_cloud.ply
-```
-
-`7000` 步适合先看覆盖情况；满意后可另建项目或移走旧输出，再用 `-Iterations 30000` 训练。`-Resolution 2` 按 1/2 原图尺寸训练，适合先试 16GB 显存；若显存不足改用 `-Resolution 4`。参数只影响本项目训练，不更改官方源码。
-
-数据和模型由 `.gitignore` 忽略，不会自动提交到 Git。此流程**只生成 3DGS**，不会生成 Mesh；Mesh 需要单独的表面重建与贴图步骤。若转换或训练中断，脚本会拒绝覆盖已有结果；检查问题后将旧结果移走，或使用新项目名重新运行。
-
-## 已验证的小测试
-
-2026-10-23 用旧房间素材的 48 张图片在这份 Windows 仓库运行了上述两阶段入口：COLMAP 注册 48/48 张、1939 个稀疏点、平均重投影误差 0.809 px；接着 `-TrainOnly -Iterations 50 -Resolution 2` 成功生成 `outputs\workflow-smoke\point_cloud\iteration_50\point_cloud.ply`。这是入口与环境烟测，50 步高斯模型不能用于评价视觉质量，也不能证明整房间几何正确。
+仓库清理前的 `runs/` 历史报告已归档到本机 `D:\3dgs\archive\legacy-runs-20261023\`；本次目录结构烟测的 PLY 已归档到 `D:\3dgs\archive\repo-layout-smoke-20261023\point_cloud.ply`。工作区内的 `data/input/` 与 `output/` 已清空，供下一段真实素材使用。
