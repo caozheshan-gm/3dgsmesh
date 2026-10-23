@@ -25,6 +25,12 @@ ffmpeg -i "$env:USERPROFILE\Desktop\BenchMelb-KIRI.mp4" -vf fps=3 -q:v 2 "data\i
 
 ## 3. 求解相机并整理训练数据
 
+如果 PowerShell 报 `COLMAP not found`，说明当前终端没有读到已经设置的用户环境变量。在**这个终端**先运行一次下面的命令，再执行转换脚本：
+
+```powershell
+$env:COLMAP_BIN = 'D:\3dgs\apps\colmap-4.2.1\COLMAP.bat'
+```
+
 ```powershell
 python script\windows\convert.py
 ```
