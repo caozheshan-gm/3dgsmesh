@@ -69,3 +69,8 @@ output\point_cloud\iteration_7000\point_cloud.ply
 - `convert.py` 提示 `Conversion output already exists`：`data\distorted`、`data\images` 或 `data\sparse` 有上次的结果。先备份旧实验，再清理这些转换产物，避免不同视频的数据混用。
 - `train.py` 提示 `Output folder is not empty`：`output` 中已有训练结果。先备份旧结果，再开始新实验。
 - 训练出的高斯和 Mesh 是两类不同结果；Mesh 转换是后续单独的实验步骤。
+
+
+
+## 预览
+- https://superspl.at/editor
