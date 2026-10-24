@@ -78,3 +78,7 @@ output\point_cloud\iteration_7000\point_cloud.ply
 
 ## 预览
 - https://superspl.at/editor
+
+
+## 归档
+- C:\Users\admin\Desktop\gitproject\3dgsmesh-archive\
