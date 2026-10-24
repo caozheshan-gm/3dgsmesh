@@ -6,6 +6,7 @@
 data/input/                 放 JPG/PNG 照片
 output/                     训练结果
 script/windows/extract_frames.py  视频抽帧，可在 VS Code 中直接运行
+script/windows/init_workspace.py  归档上一轮数据并初始化空文件夹
 script/windows/convert.py   COLMAP 相机求解与去畸变
 script/windows/train.py     3DGS 训练
 gaussian-splatting/         固定版本的官方源码快照
@@ -46,6 +47,8 @@ python -m pip install --no-build-isolation --no-deps .\gaussian-splatting\submod
 `TORCH_CUDA_ARCH_LIST=8.9` 对应当前 RTX 4090 Laptop；换显卡时应按其计算能力调整。先执行 `nvcc --version`、`python -c "import torch; print(torch.cuda.is_available())"` 和 `python -m pip check` 验证环境。本机已验证这些组件能共同运行；上面的新机器安装命令尚未在一台空白电脑上从头重跑。安装位置和构建记录见 [Windows 环境文档](docs/Windows原生3DGS环境.md)。
 
 ## 运行
+
+开始新的一轮实验前，在 VS Code 中运行 `script/windows/init_workspace.py`。它把上一轮的整个 `data/` 和 `output/` 移到仓库旁的 `3dgsmesh-archive/日期时间/`，然后重新创建空的 `data/input/` 与 `output/`；没有旧数据时只创建文件夹。移动同盘目录不会复制整份模型，也不会删除旧成果。不要在抽帧、COLMAP 或训练仍在运行时执行。
 
 如果输入是视频，先打开 `script/windows/extract_frames.py`，在文件开头修改 `VIDEO_PATH`、`FPS` 和 `JPEG_QUALITY`。在 VS Code 中首次运行前，安装 Python 扩展并用“Python: Select Interpreter”选好 `gs-main` 环境；以后点击右上角“Run Python File”即可抽帧，不必再输入 FFmpeg 命令。脚本会把照片放进 `data/input/`；如果该目录已有旧实验照片，会停止，避免混用。已经准备好 JPG/PNG 照片时，直接放进 `data/input/`。
 
