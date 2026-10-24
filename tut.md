@@ -17,7 +17,7 @@ conda activate gs-main
 
 ## 2. 视频抽帧
 
-以后可打开 `script/windows/extract_frames.py`，在文件开头修改视频路径、每秒抽帧数和 JPG 质量，再点 VS Code 的“Run Python File”。脚本会在 `data/input` 已有照片时停止，以免混用两个实验。下面保留等价的 FFmpeg 命令，便于学习每个参数：
+以后可打开 `script/windows/Aextract_frames.py`，在文件开头修改视频路径、每秒抽帧数和 JPG 质量，再点 VS Code 的“Run Python File”。脚本会在 `data/input` 已有照片时停止，以免混用两个实验。下面保留等价的 FFmpeg 命令，便于学习每个参数：
 
 ```powershell
 ffmpeg -i "$env:USERPROFILE\Desktop\BenchMelb-KIRI.mp4" -vf fps=3 -q:v 2 "data\input\frame_%04d.jpg"
@@ -34,7 +34,7 @@ $env:COLMAP_BIN = 'D:\3dgs\apps\colmap-4.2.1\COLMAP.bat'
 ```
 
 ```powershell
-python script\windows\convert.py
+python script\windows\Bconvert.py
 ```
 
 这个脚本会调用仓库内的官方 `gaussian-splatting\convert.py`，再由它调用 COLMAP。主要产物：
@@ -54,7 +54,7 @@ python script\windows\convert.py
 ## 4. 训练高斯
 
 ```powershell
-python script\windows\train.py --iterations 7000 --resolution 2
+python script\windows\Ctrain.py --iterations 7000 --resolution 2
 ```
 
 这里运行的是仓库内官方 `gaussian-splatting\train.py`；`7000` 是训练迭代数，`2` 表示训练分辨率为原图的一半。终端会显示训练进度与误差。完成后主要查看：
@@ -68,8 +68,8 @@ output\point_cloud\iteration_7000\point_cloud.ply
 ## 遇到问题时
 
 - 每条命令成功后再运行下一条；报错时保留 PowerShell 末尾的报错文本。
-- `convert.py` 提示 `Conversion output already exists`：`data\distorted`、`data\images` 或 `data\sparse` 有上次的结果。先备份旧实验，再清理这些转换产物，避免不同视频的数据混用。
-- `train.py` 提示 `Output folder is not empty`：`output` 中已有训练结果。先备份旧结果，再开始新实验。
+- `Bconvert.py` 提示 `Conversion output already exists`：`data\distorted`、`data\images` 或 `data\sparse` 有上次的结果。运行 `script/windows/Dinit_workspace.py` 归档旧实验并准备空目录，再开始新实验。
+- `Ctrain.py` 提示 `Output folder is not empty`：`output` 中已有训练结果。运行 `script/windows/Dinit_workspace.py` 归档旧结果，再开始新实验。
 - 训练出的高斯和 Mesh 是两类不同结果；Mesh 转换是后续单独的实验步骤。
 
 

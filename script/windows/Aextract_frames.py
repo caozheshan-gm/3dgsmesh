@@ -49,7 +49,7 @@ def main() -> None:
     count = sum(1 for path in output_dir.glob("frame_*.jpg") if path.is_file())
     if not count:
         raise SystemExit("FFmpeg finished but produced no JPG frames. Check the video and FFmpeg output.")
-    print(f"Extracted {count} frames. Next: python script\\windows\\convert.py", flush=True)
+    print(f"Extracted {count} frames. Next: python script\\windows\\Bconvert.py", flush=True)
 
 
 if __name__ == "__main__":

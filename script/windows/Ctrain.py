@@ -20,9 +20,9 @@ trainer = upstream / "train.py"
 for name in ("cameras.bin", "images.bin", "points3D.bin"):
     file = data / "sparse" / "0" / name
     if not file.is_file():
-        raise SystemExit(f"Missing {file}; run script/windows/convert.py first.")
+        raise SystemExit(f"Missing {file}; run script/windows/Bconvert.py first.")
 if not (data / "images").is_dir():
-    raise SystemExit("Missing data/images; run script/windows/convert.py first.")
+    raise SystemExit("Missing data/images; run script/windows/Bconvert.py first.")
 if not trainer.is_file():
     raise SystemExit(f"Official source missing: {trainer}")
 if output.exists() and any(path.name != ".gitkeep" for path in output.iterdir()):

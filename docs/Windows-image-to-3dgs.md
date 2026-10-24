@@ -3,11 +3,11 @@
 ## 文件夹与运行顺序
 
 1. 在仓库 `data/input/` 放入相互重叠的 JPG/PNG 照片。建议初次测试用几十张到一百多张清晰照片，有真实的相机位移，避免大量重复帧、运动模糊和 HEIC 原片。
-2. 打开已经配置好的 3DGS Conda 环境，在仓库根目录执行 `python script\windows\convert.py`。这一步调用仓库内 `gaussian-splatting/convert.py` 和 COLMAP，输出 `data/images/`、`data/sparse/0/`。
+2. 打开已经配置好的 3DGS Conda 环境，在仓库根目录执行 `python script\windows\Bconvert.py`。这一步调用仓库内 `gaussian-splatting/convert.py` 和 COLMAP，输出 `data/images/`、`data/sparse/0/`。
 3. 检查已注册图片数、相机轨迹和稀疏点云。相机求解不好时先处理照片，不要急着训练。
-4. 执行 `python script\windows\train.py --iterations 7000 --resolution 2`。它调用仓库内 `gaussian-splatting/train.py`，输出 `output/point_cloud/iteration_7000/point_cloud.ply`。
+4. 执行 `python script\windows\Ctrain.py --iterations 7000 --resolution 2`。它调用仓库内 `gaussian-splatting/train.py`，输出 `output/point_cloud/iteration_7000/point_cloud.ply`。
 
-`--resolution 2` 是先用半分辨率适配 16GB 显存；若显存不足可试 `--resolution 4`。确认流程和照片质量后，再另起一次实验尝试更多迭代。脚本会拒绝覆盖已有转换或训练结果；更换素材前请自行备份或移走 `data/` 中的生成目录以及 `output/`。
+`--resolution 2` 是先用半分辨率适配 16GB 显存；若显存不足可试 `--resolution 4`。确认流程和照片质量后，再另起一次实验尝试更多迭代。脚本会拒绝覆盖已有转换或训练结果；更换素材前运行 `script/windows/Dinit_workspace.py`，将本轮 `data/` 与 `output/` 归档并创建空目录。
 
 ## 换电脑时
 

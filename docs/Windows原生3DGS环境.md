@@ -10,7 +10,7 @@
 - PyTorch 2.5.1+cu124、torchvision 0.20.1+cu124、NumPy 1.26.4 等：官方轮子经 OpenClaw 跳板服务器中转后离线安装。
 - `D:\3dgs\apps\colmap-4.2.1`：官方 Windows CUDA 包；完整包 SHA256 `e9c5cbd84c2ea986d2e970a2473fc2d2e6b34a2cdcf5d3df2765c319a63af881`。`colmap -h` 已运行。
 - `D:\3dgs\apps\gaussian-src`：官方 3DGS 根提交 `54c035f7834b564019656c3e3fcc3646292f727d`；rasterizer `9c5c2028f6fbee2be239bc4c9421ff894fe4fbe0`；fused-ssim `1272e21a282342e89537159e4bad508b19b34157`；simple-knn `86710c2d4b46680c02301765dd79e465819c8f19`（同提交镜像）；GLM `5c46b9c07008ae65cb81ab79cd677ecc1934b903`。大图片 assets 与 SIBR viewer 未下载，不影响训练脚本。
-- 启动脚本 `D:\3dgs\scripts\activate-gs.cmd`，编译脚本 `D:\3dgs\scripts\build-extensions.cmd`。日志在 `D:\3dgs\logs`。这些是当时安装环境所用的脚本，保留在本机 `D:\3dgs\scripts`；仓库日常入口现为 `script/windows/convert.py` 和 `script/windows/train.py`。
+- 启动脚本 `D:\3dgs\scripts\activate-gs.cmd`，编译脚本 `D:\3dgs\scripts\build-extensions.cmd`。日志在 `D:\3dgs\logs`。这些是当时安装环境所用的脚本，保留在本机 `D:\3dgs\scripts`；仓库日常入口现为 `script/windows/Bconvert.py` 和 `script/windows/Ctrain.py`。
 
 ## 中转下载
 
@@ -27,8 +27,8 @@ OpenClaw 服务器仅作文件中转；文件在其 `/home/ubuntu/3dgs-downloads
 
 ## 使用方式
 
-这是安装时的历史记录。现在项目内已保存官方源码快照；在已激活的 Conda 环境中，从仓库根目录运行 `python script\windows\convert.py` 和 `python script\windows\train.py`。输入为 `data\input`，输出为 `output`。测试不会替代对视频质量、相机求解和真实尺寸的审查。
+这是安装时的历史记录。现在项目内已保存官方源码快照；在已激活的 Conda 环境中，从仓库根目录运行 `python script\windows\Bconvert.py` 和 `python script\windows\Ctrain.py`。输入为 `data\input`，输出为 `output`。测试不会替代对视频质量、相机求解和真实尺寸的审查。
 
-旧的 Windows 桌面入口 `3DGS Environment.cmd` 指向 `D:\3dgs\apps\gaussian-src`，在改用本仓库作为工作区后已删除。现在从仓库根目录执行 `conda activate gs-main`，再运行 `script/windows/convert.py` 和 `script/windows/train.py`。Mac 桌面 `Windows-3DGS-progress.command` 已改为显示完成摘要。
+旧的 Windows 桌面入口 `3DGS Environment.cmd` 指向 `D:\3dgs\apps\gaussian-src`，在改用本仓库作为工作区后已删除。现在从仓库根目录执行 `conda activate gs-main`，再运行 `script/windows/Bconvert.py` 和 `script/windows/Ctrain.py`。Mac 桌面 `Windows-3DGS-progress.command` 已改为显示完成摘要。
 
 官方 3DGS 及其扩展含研究/评估用途许可；若将来厂房展示用于商业交付，需要逐项核对源码与模型工具许可。本次仅作本地学习和实验。

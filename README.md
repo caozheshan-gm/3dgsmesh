@@ -5,10 +5,10 @@
 ```text
 data/input/                 放 JPG/PNG 照片
 output/                     训练结果
-script/windows/extract_frames.py  视频抽帧，可在 VS Code 中直接运行
-script/windows/init_workspace.py  归档上一轮数据并初始化空文件夹
-script/windows/convert.py   COLMAP 相机求解与去畸变
-script/windows/train.py     3DGS 训练
+script/windows/Aextract_frames.py  视频抽帧，可在 VS Code 中直接运行
+script/windows/Bconvert.py   COLMAP 相机求解与去畸变
+script/windows/Ctrain.py     3DGS 训练
+script/windows/Dinit_workspace.py  归档上一轮数据并初始化空文件夹，供下一轮使用
 gaussian-splatting/         固定版本的官方源码快照
 docs/                       环境与实验记录
 ```
@@ -48,16 +48,16 @@ python -m pip install --no-build-isolation --no-deps .\gaussian-splatting\submod
 
 ## 运行
 
-开始新的一轮实验前，在 VS Code 中运行 `script/windows/init_workspace.py`。它把上一轮的整个 `data/` 和 `output/` 移到仓库旁的 `3dgsmesh-archive/日期时间/`，然后重新创建空的 `data/input/` 与 `output/`；没有旧数据时只创建文件夹。移动同盘目录不会复制整份模型，也不会删除旧成果。不要在抽帧、COLMAP 或训练仍在运行时执行。
+开始新的一轮实验前，在 VS Code 中运行 `script/windows/Dinit_workspace.py`。它把上一轮的整个 `data/` 和 `output/` 移到仓库旁的 `3dgsmesh-archive/日期时间/`，然后重新创建空的 `data/input/` 与 `output/`；没有旧数据时只创建文件夹。移动同盘目录不会复制整份模型，也不会删除旧成果。不要在抽帧、COLMAP 或训练仍在运行时执行。
 
-如果输入是视频，先打开 `script/windows/extract_frames.py`，在文件开头修改 `VIDEO_PATH`、`FPS` 和 `JPEG_QUALITY`。在 VS Code 中首次运行前，安装 Python 扩展并用“Python: Select Interpreter”选好 `gs-main` 环境；以后点击右上角“Run Python File”即可抽帧，不必再输入 FFmpeg 命令。脚本会把照片放进 `data/input/`；如果该目录已有旧实验照片，会停止，避免混用。已经准备好 JPG/PNG 照片时，直接放进 `data/input/`。
+如果输入是视频，先打开 `script/windows/Aextract_frames.py`，在文件开头修改 `VIDEO_PATH`、`FPS` 和 `JPEG_QUALITY`。在 VS Code 中首次运行前，安装 Python 扩展并用“Python: Select Interpreter”选好 `gs-main` 环境；以后点击右上角“Run Python File”即可抽帧，不必再输入 FFmpeg 命令。脚本会把照片放进 `data/input/`；如果该目录已有旧实验照片，会停止，避免混用。已经准备好 JPG/PNG 照片时，直接放进 `data/input/`。
 
 之后在仓库根目录、已激活环境中运行；当前电脑现在可直接用 `conda activate gs-main`：
 
 ```powershell
 conda activate gs-main
-python script\windows\convert.py
-python script\windows\train.py --iterations 7000 --resolution 2
+python script\windows\Bconvert.py
+python script\windows\Ctrain.py --iterations 7000 --resolution 2
 ```
 
 转换结果在 `data/images/` 和 `data/sparse/0/`，高斯模型在 `output/point_cloud/iteration_7000/point_cloud.ply`。`data/` 和 `output/` 的内容默认不提交 Git。首次使用及更换电脑时的依赖配置、参数和注意事项见 [Windows 工作流](docs/Windows-image-to-3dgs.md)。
