@@ -17,6 +17,8 @@ conda activate gs-main
 
 ## 2. 视频抽帧
 
+以后可打开 `script/windows/extract_frames.py`，在文件开头修改视频路径、每秒抽帧数和 JPG 质量，再点 VS Code 的“Run Python File”。脚本会在 `data/input` 已有照片时停止，以免混用两个实验。下面保留等价的 FFmpeg 命令，便于学习每个参数：
+
 ```powershell
 ffmpeg -i "$env:USERPROFILE\Desktop\BenchMelb-KIRI.mp4" -vf fps=3 -q:v 2 "data\input\frame_%04d.jpg"
 ```

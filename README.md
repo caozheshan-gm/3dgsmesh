@@ -5,6 +5,7 @@
 ```text
 data/input/                 放 JPG/PNG 照片
 output/                     训练结果
+script/windows/extract_frames.py  视频抽帧，可在 VS Code 中直接运行
 script/windows/convert.py   COLMAP 相机求解与去畸变
 script/windows/train.py     3DGS 训练
 gaussian-splatting/         固定版本的官方源码快照
@@ -18,6 +19,7 @@ docs/                       环境与实验记录
 1. 安装 [NVIDIA 显卡驱动](https://www.nvidia.com/en-us/drivers/)；用 `nvidia-smi` 确认能识别显卡。
 2. 安装 [Miniconda](https://www.anaconda.com/docs/getting-started/miniconda/install) 和 [Visual Studio 2022 Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/)（C++ 编译工具、Windows SDK）。这台电脑编译扩展时使用 MSVC 14.38 / Windows SDK 22621。
 3. 安装 [COLMAP 4.2.1 的 Windows CUDA 版](https://github.com/colmap/colmap/releases/tag/4.2.1)，并把 `COLMAP.bat` 或 `colmap.exe` 加入 `PATH`，或者设置用户环境变量 `COLMAP_BIN` 指向该文件。当前电脑的 `COLMAP_BIN` 指向 `D:\3dgs\apps\colmap-4.2.1\COLMAP.bat`。
+   如果从视频抽帧，还需安装 [FFmpeg](https://ffmpeg.org/download.html) 并将 `ffmpeg.exe` 加入 `PATH`；当前电脑已经安装。
 4. 在 Conda 终端创建环境，安装 Python 3.10、CUDA 12.4 编译工具、PyTorch CUDA 12.4 和 Python 包：
 
 ```powershell
@@ -45,7 +47,9 @@ python -m pip install --no-build-isolation --no-deps .\gaussian-splatting\submod
 
 ## 运行
 
-在仓库根目录、已激活环境中运行；当前电脑现在可直接用 `conda activate gs-main`：
+如果输入是视频，先打开 `script/windows/extract_frames.py`，在文件开头修改 `VIDEO_PATH`、`FPS` 和 `JPEG_QUALITY`。在 VS Code 中首次运行前，安装 Python 扩展并用“Python: Select Interpreter”选好 `gs-main` 环境；以后点击右上角“Run Python File”即可抽帧，不必再输入 FFmpeg 命令。脚本会把照片放进 `data/input/`；如果该目录已有旧实验照片，会停止，避免混用。已经准备好 JPG/PNG 照片时，直接放进 `data/input/`。
+
+之后在仓库根目录、已激活环境中运行；当前电脑现在可直接用 `conda activate gs-main`：
 
 ```powershell
 conda activate gs-main
