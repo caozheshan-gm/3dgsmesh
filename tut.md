@@ -15,6 +15,8 @@ conda activate gs-main
 
 看到提示符前面出现 `(gs-main)`，再继续。当前电脑已经配置好这个环境；换电脑时参照 [README](README.md) 安装依赖。
 
+已经理解各步骤、只想一次运行时，可打开 `script/windows/Eall_in_one.py`，修改文件开头的 `VIDEO_PATH`，然后在 VS Code 用 `gs-main` 解释器运行。它按下面的第 2～4 步依次调用 A、B、C 脚本；旧数据存在时先运行 `Dinit_workspace.py` 归档。
+
 ## 2. 视频抽帧
 
 以后可打开 `script/windows/Aextract_frames.py`，在文件开头修改视频路径、每秒抽帧数和 JPG 质量，再点 VS Code 的“Run Python File”。脚本会在 `data/input` 已有照片时停止，以免混用两个实验。下面保留等价的 FFmpeg 命令，便于学习每个参数：

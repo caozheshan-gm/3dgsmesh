@@ -1,5 +1,6 @@
 """Extract video frames into data/input for COLMAP and 3DGS training."""
 
+import argparse
 from pathlib import Path
 import shutil
 import subprocess
@@ -13,17 +14,24 @@ FFMPEG = "ffmpeg"  # Or set this to the full path of ffmpeg.exe.
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description="Extract JPG frames from a video into data/input")
+    parser.add_argument("--video", type=Path, default=VIDEO_PATH)
+    parser.add_argument("--fps", type=float, default=FPS)
+    parser.add_argument("--jpeg-quality", type=int, default=JPEG_QUALITY)
+    parser.add_argument("--ffmpeg", default=FFMPEG)
+    args = parser.parse_args()
+
     repo = Path(__file__).resolve().parents[2]
     output_dir = repo / "data" / "input"
-    video = Path(VIDEO_PATH).expanduser()
+    video = args.video.expanduser()
 
     if not video.is_file():
-        raise SystemExit(f"Video not found: {video}\nEdit VIDEO_PATH at the top of this script.")
-    if FPS <= 0:
+        raise SystemExit(f"Video not found: {video}\nEdit VIDEO_PATH or pass --video.")
+    if args.fps <= 0:
         raise SystemExit("FPS must be greater than 0.")
-    if not 1 <= JPEG_QUALITY <= 31:
+    if not 1 <= args.jpeg_quality <= 31:
         raise SystemExit("JPEG_QUALITY must be between 1 and 31.")
-    ffmpeg = shutil.which(FFMPEG)
+    ffmpeg = shutil.which(args.ffmpeg)
     if not ffmpeg:
         raise SystemExit("FFmpeg not found. Put ffmpeg on PATH or set FFMPEG to ffmpeg.exe's full path.")
 
@@ -40,10 +48,10 @@ def main() -> None:
 
     pattern = output_dir / "frame_%04d.jpg"
     command = [ffmpeg, "-hide_banner", "-n", "-i", str(video),
-               "-vf", f"fps={FPS}", "-q:v", str(JPEG_QUALITY), str(pattern)]
+               "-vf", f"fps={args.fps}", "-q:v", str(args.jpeg_quality), str(pattern)]
     print(f"Video: {video}", flush=True)
     print(f"Output: {output_dir}", flush=True)
-    print(f"Extracting {FPS} frames/s at JPEG quality {JPEG_QUALITY}...", flush=True)
+    print(f"Extracting {args.fps} frames/s at JPEG quality {args.jpeg_quality}...", flush=True)
     subprocess.run(command, check=True)
 
     count = sum(1 for path in output_dir.glob("frame_*.jpg") if path.is_file())

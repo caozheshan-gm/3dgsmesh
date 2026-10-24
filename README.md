@@ -9,6 +9,7 @@ script/windows/Aextract_frames.py  视频抽帧，可在 VS Code 中直接运行
 script/windows/Bconvert.py   COLMAP 相机求解与去畸变
 script/windows/Ctrain.py     3DGS 训练
 script/windows/Dinit_workspace.py  归档上一轮数据并初始化空文件夹，供下一轮使用
+script/windows/Eall_in_one.py  一键执行 A → B → C，从视频生成 3DGS
 gaussian-splatting/         固定版本的官方源码快照
 docs/                       环境与实验记录
 ```
@@ -49,6 +50,8 @@ python -m pip install --no-build-isolation --no-deps .\gaussian-splatting\submod
 ## 运行
 
 开始新的一轮实验前，在 VS Code 中运行 `script/windows/Dinit_workspace.py`。它把上一轮的整个 `data/` 和 `output/` 移到仓库旁的 `3dgsmesh-archive/日期时间/`，然后重新创建空的 `data/input/` 与 `output/`；没有旧数据时只创建文件夹。移动同盘目录不会复制整份模型，也不会删除旧成果。不要在抽帧、COLMAP 或训练仍在运行时执行。
+
+想从视频一次跑到高斯模型时，打开 `script/windows/Eall_in_one.py`，在文件开头修改 `VIDEO_PATH`，按需调整 `FPS`、`JPEG_QUALITY`、`ITERATIONS`、`RESOLUTION`，在 VS Code 选择 `gs-main` 解释器后点击“Run Python File”。它顺序调用下面的 A、B、C 脚本，终端会显示 FFmpeg、COLMAP 和训练进度。若已有上一轮数据，它会停止并提示先运行 D；不会自动归档或覆盖。本流程输出 `output/point_cloud/iteration_7000/point_cloud.ply`（迭代数可改），尚不生成 Mesh。
 
 如果输入是视频，先打开 `script/windows/Aextract_frames.py`，在文件开头修改 `VIDEO_PATH`、`FPS` 和 `JPEG_QUALITY`。在 VS Code 中首次运行前，安装 Python 扩展并用“Python: Select Interpreter”选好 `gs-main` 环境；以后点击右上角“Run Python File”即可抽帧，不必再输入 FFmpeg 命令。脚本会把照片放进 `data/input/`；如果该目录已有旧实验照片，会停止，避免混用。已经准备好 JPG/PNG 照片时，直接放进 `data/input/`。
 
